@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 10 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://afshinyavari.github.io/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>K3s cluster architecture</title>
-      <link>https://afshinyavari.github.io/post/2023-04-11-cluster-architecture/</link>
+      <link>https://afshinyavari.github.io/post/2023-04-10-cluster-architecture/</link>
       <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://afshinyavari.github.io/post/2023-04-11-cluster-architecture/</guid>
+      <guid>https://afshinyavari.github.io/post/2023-04-10-cluster-architecture/</guid>
       <description>High level cluster architecture This post will describe the k3s-cluster architecture, what components I will use and which steps I have to take before I can get ArgoCD up and running for Gitops. The goal is to do as few manual steps as possible until ArgoCD is installed and everything can be moved to git and a gitops approach.
 To be able to setup and access ArgoCD I need persistent storage.</description>
     </item>
