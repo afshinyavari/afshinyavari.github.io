@@ -5,19 +5,7 @@
     <loc>https://afshinyavari.github.io/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://afshinyavari.github.io/tags/architecture/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://afshinyavari.github.io/categories/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/tags/gitops/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/tags/k3s/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/post/2023-04-11-cluster-architecture/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/tags/kafka/</loc>
@@ -27,9 +15,6 @@
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/tags/kafka-streams/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/categories/kubernetes/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/tags/kunermetes/</loc>
@@ -48,8 +33,6 @@
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/about/</loc>
-  </url><url>
-    <loc>https://afshinyavari.github.io/tags/ci/cd/</loc>
   </url><url>
     <loc>https://afshinyavari.github.io/archive/</loc>
   </url>

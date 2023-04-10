@@ -8,33 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://afshinyavari.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>architecture</title>
-      <link>https://afshinyavari.github.io/tags/architecture/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://afshinyavari.github.io/tags/architecture/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gitops</title>
-      <link>https://afshinyavari.github.io/tags/gitops/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://afshinyavari.github.io/tags/gitops/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>k3s</title>
-      <link>https://afshinyavari.github.io/tags/k3s/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://afshinyavari.github.io/tags/k3s/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Kafka</title>
       <link>https://afshinyavari.github.io/tags/kafka/</link>
       <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
@@ -67,15 +40,6 @@
       <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://afshinyavari.github.io/tags/redpanda/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CI/CD</title>
-      <link>https://afshinyavari.github.io/tags/ci/cd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://afshinyavari.github.io/tags/ci/cd/</guid>
       <description></description>
     </item>
     
