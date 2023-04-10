@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="K3s cluster architecture" />
+    <meta property="og:title" content="K3s cluster architecture" />
+    <meta property="twitter:title" content="K3s cluster architecture" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Afshin, Afshin Yavari, Kafka, Kubernetes, K8s, OpenShift, kafka-streams, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Categories | Afshin Yavari</title>
+    <title>K3s cluster architecture | Afshin Yavari</title>
 
-    <link rel="canonical" href="/categories/">
+    <link rel="canonical" href="/post/2023-04-11-cluster-architecture/">
 
     
     
@@ -157,14 +157,57 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/bg.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Afshin Yavari </h1>
-                    
-		    <span class="subheading"></span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/kunermetes" title="Kunermetes">
+                            Kunermetes
+                        </a>
+                        
+                        <a class="tag" href="/tags/k3s" title="k3s">
+                            k3s
+                        </a>
+                        
+                        <a class="tag" href="/tags/architecture" title="architecture">
+                            architecture
+                        </a>
+                        
+                        <a class="tag" href="/tags/gitops" title="Gitops">
+                            Gitops
+                        </a>
+                        
+                        <a class="tag" href="/tags/ci/cd" title="CI/CD">
+                            CI/CD
+                        </a>
+                        
+                    </div>
+                    <h1>K3s cluster architecture</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                     &#34;Afshin Yavari&#34;
+                             
+                            on 
+                            Monday, April 10, 2023
+                            
+                            
+                            
+                            
+                    </span>
                 </div>
             </div>
         </div>
@@ -177,19 +220,60 @@
 <article>
     <div class="container">
         <div class="row">
+
             
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
+                
+                <h1 id="high-level-cluster-architecture">High level cluster architecture</h1>
+<p>This post will describe the k3s-cluster architecture, what components I will use and which steps I have to take before I can get ArgoCD up and running for Gitops. The goal is to do as few manual steps as possible until ArgoCD is installed and everything can be moved to git and a gitops approach.</p>
+<p>
+  <img src="img//static/img/cluster-architecture.excalidraw.png" alt="image info">
+
+</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/2023-04-10-welcome/" data-toggle="tooltip" data-placement="top" title="Welcome">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
                 
 
 
 
-
             </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
             
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -218,7 +302,7 @@
                         
                         
                         <a href="/tags/kunermetes" title="kunermetes">
-                        kunermetes
+                            kunermetes
                         </a>
                         
                         
@@ -293,7 +377,7 @@
             
            
                    <li>
-                       <a href='/categories/index.xml' rel="alternate" type="application/rss+xml" title="Afshin Yavari" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="Afshin Yavari" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

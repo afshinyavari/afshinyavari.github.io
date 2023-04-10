@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RedPanda on Afshin Yavari</title>
+    <link>https://afshinyavari.github.io/tags/redpanda/</link>
+    <description>Recent content in RedPanda on Afshin Yavari</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://afshinyavari.github.io/tags/redpanda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome</title>
+      <link>https://afshinyavari.github.io/post/2023-04-10-welcome/</link>
+      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/post/2023-04-10-welcome/</guid>
+      <description>Hello and welcome to my blog. In this blog I will document what I do when I have some time to spare trying out different open source software.
+Last year I built my own server from used parts which I purchased on ebay. It&amp;rsquo;s a dual cpu motherboard with two intel Xeon e5 2680 v4 each with 14 cores and 28 threads, 512 GB DDR4 ECC ram and 2 TB SSD disk, running VmWare ESXI for virtualization.</description>
+    </item>
+    
+  </channel>
+</rss>
