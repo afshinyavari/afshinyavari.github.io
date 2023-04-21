@@ -3,21 +3,54 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://afshinyavari.github.io/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/tags/architecture/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/categories/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/ingress/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/installation/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/k3s/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/post/2023-04-21-installation/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/k3sup/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/kube-vip/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/kubernetes/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/categories/kubernetes/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/nfs/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/post/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://afshinyavari.github.io/tags/architecture/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/tags/gitops/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://afshinyavari.github.io/tags/k3s/</loc>
+    <loc>https://afshinyavari.github.io/post/2023-04-10-cluster-architecture/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://afshinyavari.github.io/post/2023-04-10-cluster-architecture/</loc>
+    <loc>https://afshinyavari.github.io/post/2023-04-11-cluster-setup/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/tags/kafka/</loc>
@@ -29,19 +62,7 @@
     <loc>https://afshinyavari.github.io/tags/kafka-streams/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://afshinyavari.github.io/tags/kubernetes/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/categories/kubernetes/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/post/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://afshinyavari.github.io/tags/redpanda/</loc>
-    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://afshinyavari.github.io/tags/</loc>
     <lastmod>2023-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://afshinyavari.github.io/post/2023-04-10-welcome/</loc>

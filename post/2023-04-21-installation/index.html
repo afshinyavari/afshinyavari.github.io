@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Afshin Yavari">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://afshinyavari.github.io/img/bg.jpg">
+    <meta property="twitter:image" content="https://afshinyavari.github.io/img/bg.jpg" />
+    
+
+    
+    <meta name="title" content="K3s initial installation" />
+    <meta property="og:title" content="K3s initial installation" />
+    <meta property="twitter:title" content="K3s initial installation" />
+    
+
+    
+    <meta name="description" content="Afshin blog about open source, kubernetes, kafka and much more">
+    <meta property="og:description" content="Afshin blog about open source, kubernetes, kafka and much more" />
+    <meta property="twitter:description" content="Afshin blog about open source, kubernetes, kafka and much more" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Afshin, Afshin Yavari, Kafka, Kubernetes, K8s, OpenShift, kafka-streams, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>K3s initial installation | Afshin Yavari</title>
+
+    <link rel="canonical" href="/post/2023-04-21-installation/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Afshin Yavari</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/kafka/">kafka</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/kubernetes/">kubernetes</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/archive//">ARCHIVE</a></li>
+                    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/bg.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/kubernetes" title="Kubernetes">
+                            Kubernetes
+                        </a>
+                        
+                        <a class="tag" href="/tags/k3s" title="k3s">
+                            k3s
+                        </a>
+                        
+                        <a class="tag" href="/tags/installation" title="installation">
+                            installation
+                        </a>
+                        
+                        <a class="tag" href="/tags/k3sup" title="k3sup">
+                            k3sup
+                        </a>
+                        
+                        <a class="tag" href="/tags/kube-vip" title="Kube-vip">
+                            Kube-vip
+                        </a>
+                        
+                        <a class="tag" href="/tags/ingress" title="Ingress">
+                            Ingress
+                        </a>
+                        
+                        <a class="tag" href="/tags/nfs" title="nfs">
+                            nfs
+                        </a>
+                        
+                    </div>
+                    <h1>K3s initial installation</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                     &#34;Afshin Yavari&#34;
+                             
+                            on 
+                            Friday, April 21, 2023
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="background">Background</h1>
+<p>In my previous post I described a high level initial cluster architecture based on k3s, k3sup for installation, kube-vip to setup a VIP-ip for the kubernetes API and for loadbalancing services of type LoadBalancer, ingress for which will get an external IP from the loadbalancer and nfs for persistent volume claims.</p>
+<h1 id="setup">Setup</h1>
+<p>The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 controle-planes and 3 worker nodes. THe 7th virtual machine will be the nfs server and in this setup will be a single point of failure. I will later on solve this by adding more disks to my server and maybe setup true-NAS or something else.</p>
+<h2 id="k3sup-pre-requisits">K3sup pre-requisits</h2>
+<p>Start by setting up k3sup on a machine, I will use my own personal computer.</p>
+<pre tabindex="0"><code>curl -sLS https://get.k3sup.dev | sh
+sudo install k3sup /usr/local/bin/
+</code></pre><p>We can now run below command to see if the CLI is working</p>
+<pre tabindex="0"><code>k3sup --help
+Usage:
+  k3sup [flags]
+  k3sup [command]
+
+Examples:
+  # Install k3s on a server with embedded etcd
+  k3sup install \
+    --cluster \
+    --host $SERVER_1 \
+    --user $SERVER_1_USER \
+    --k3s-channel stable
+
+  # Join a second server
+  k3sup join \
+    --server \
+    --host $SERVER_2 \
+    --user $SERVER_2_USER \
+    --server-host $SERVER_1 \
+    --server-user $SERVER_1_USER \
+    --k3s-channel stable
+
+  # Join an agent to the cluster
+  k3sup join \
+    --host $SERVER_1 \
+    --user $SERVER_1_USER \
+    --k3s-channel stable
+
+🐳 k3sup needs your support: https://github.com/sponsors/alexellis
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  install     Install k3s on a server via SSH
+  join        Install the k3s agent on a remote host and join it to an existing server
+  ready       Check if a cluster is ready using kubectl.
+  update      Print update instructions
+  version     Print the version
+
+Flags:
+  -h, --help   help for k3sup
+
+Use &#34;k3sup [command] --help&#34; for more information about a command.
+</code></pre><p>Second step is to setup ssh-keys and passwordless ssh towards all machines</p>
+<pre tabindex="0"><code>ssh-keygen -t ed25519
+
+ssh-copy-id -i ~/.ssh/mykey user@host
+
+ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-m1
+ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-m2
+ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-m3
+ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-w1
+ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-w2
+ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-w3
+ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-svc
+</code></pre><p>On all machines setup so the user which k3sup will use can run password less sudo commands.</p>
+<p>On all machines run</p>
+<pre tabindex="0"><code>sudo visudo
+</code></pre><p>And add</p>
+<pre tabindex="0"><code>afshin  ALL=(ALL) NOPASSWD: ALL
+</code></pre><h2 id="k3s-installation">K3s installation</h2>
+<p>We are now ready to utilize k3sup to create our k3s cluster. Since we want to use Kube-VIP to create a VIP IP for the k8s API we have to take that into consideration when setting up our controle-plane nodes. We do that by taking an IP which we later on will use as our VIP and this will be our tls-san.</p>
+<p>Below command will setup our initial control-plane node. Ip is the ip of the virtual machine, no-extras is because I don&rsquo;t want servies such as Traefik etc which k3sup can setup for you, tls-san is the VIP-IP, context will be the name of the cluster and also how you can switch back and forth between cluster if having all clusters in one kubeconfig which we will get by adding the local-path and merge commands.</p>
+<pre tabindex="0"><code>k3sup install  \
+--ip master-1-ip \
+--user afshin \
+--no-extras \
+--ssh-key ~/.ssh/id_ed25519 \
+--tls-san=VIP-ip \
+--context=k3s-cluster \
+--merge \
+--local-path $HOME/.kube/config \
+--cluster
+</code></pre><p>When the initial control-plane is up (takes about a minute or so) we can run below command to add additional control-plane nodes.</p>
+<pre tabindex="0"><code>k3sup join \
+  --ip additional-control-plane-ip \
+  --user afshin \
+  --server-user afshin \
+  --server-ip VIP-ip \
+  --server \
+  --ssh-key ~/.ssh/id_ed25519
+</code></pre><p>To add worker-nodes we run</p>
+<pre tabindex="0"><code>k3sup join 
+  --user afshin \
+  --server-ip worker-ip \
+  --ip one-of-control-plane-ips \
+  --ssh-key ~/.ssh/id_ed25519
+</code></pre><p>We should now be able to see our brand new cluster</p>
+<pre tabindex="0"><code>kubectl get nodes -o wide
+NAME   STATUS   ROLES                       AGE   VERSION        INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+k-m1   Ready    control-plane,etcd,master   5m    v1.26.3+k3s1   ip              &lt;none&gt;        Ubuntu 22.04.2 LTS   5.15.0-69-generic   containerd://1.6.19-k3s1
+k-m2   Ready    control-plane,etcd,master   3m    v1.26.3+k3s1   ip              &lt;none&gt;        Ubuntu 22.04.2 LTS   5.15.0-69-generic   containerd://1.6.19-k3s1
+k-m3   Ready    control-plane,etcd,master   2m    v1.26.3+k3s1   ip              &lt;none&gt;        Ubuntu 22.04.2 LTS   5.15.0-69-generic   containerd://1.6.19-k3s1
+k-w1   Ready    &lt;none&gt;                      1m    v1.26.3+k3s1   ip              &lt;none&gt;        Ubuntu 22.04.2 LTS   5.15.0-69-generic   containerd://1.6.19-k3s1
+k-w2   Ready    &lt;none&gt;                      1m    v1.26.3+k3s1   ip              &lt;none&gt;        Ubuntu 22.04.2 LTS   5.15.0-69-generic   containerd://1.6.19-k3s1
+k-w3   Ready    &lt;none&gt;                      1m    v1.26.3+k3s1   ip              &lt;none&gt;        Ubuntu 22.04.2 LTS   5.15.0-69-generic   containerd://1.6.19-k3s1
+</code></pre><h2 id="kube-vip-setup">Kube-vip setup</h2>
+<h3 id="vip-for-k8s-api">VIP for k8s API</h3>
+<p>We will install kube-vip in ARP-mode as a DaemonSet running on all control-plane nodes.</p>
+<p>First we need rbac</p>
+<pre tabindex="0"><code>wget https://kube-vip.io/manifests/rbac.yaml &gt; rbac.yaml
+kubectl apply -f rbac.yaml
+</code></pre><p>Then we need the DaemonSet deployment-file, we can copy this from the <a href="https://kube-vip.io/docs/installation/daemonset/">documentation </a></p>
+<p>Whats important to note here is the</p>
+<ul>
+<li>affinity rules which says it has to run on controle-plane/master nodes</li>
+<li>vip_arp = true</li>
+<li>adress, which is the vip-adress (tls-san) we used when setting up the cluster</li>
+</ul>
+<pre tabindex="0"><code>apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  creationTimestamp: null
+  name: kube-vip-ds
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: kube-vip-ds
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: kube-vip-ds
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/master
+                operator: Exists
+            - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: Exists
+      containers:
+      - args:
+        - manager
+        env:
+        - name: vip_arp
+          value: &#34;true&#34;
+        - name: port
+          value: &#34;6443&#34;
+        - name: vip_interface
+          value: ens160
+        - name: vip_cidr
+          value: &#34;32&#34;
+        - name: cp_enable
+          value: &#34;true&#34;
+        - name: cp_namespace
+          value: kube-system
+        - name: vip_ddns
+          value: &#34;false&#34;
+        - name: svc_enable
+          value: &#34;true&#34;
+        - name: vip_leaderelection
+          value: &#34;true&#34;
+        - name: vip_leaseduration
+          value: &#34;5&#34;
+        - name: vip_renewdeadline
+          value: &#34;3&#34;
+        - name: vip_retryperiod
+          value: &#34;1&#34;
+        - name: address
+          value: 192.168.0.40
+        image: ghcr.io/kube-vip/kube-vip:v0.4.0
+        imagePullPolicy: Always
+        name: kube-vip
+        resources: {}
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
+            - NET_RAW
+            - SYS_TIME
+      hostNetwork: true
+      serviceAccountName: kube-vip
+      tolerations:
+      - effect: NoSchedule
+        operator: Exists
+      - effect: NoExecute
+        operator: Exists
+  updateStrategy: {}
+status:
+  currentNumberScheduled: 0
+  desiredNumberScheduled: 0
+  numberMisscheduled: 0
+  numberReady: 0
+</code></pre><p>We can configure those parameters and then run</p>
+<pre tabindex="0"><code>kubectl apply -f daemonSet.yaml
+
+kubectl get pods -n kube-system
+
+NAME                                            READY   STATUS            RESTARTS        AGE
+coredns-7c444649cb-vdfqw                        1/1     Running           1 (8d ago)      9d
+kube-vip-ds-78sf6                               1/1     Running           1 (3d12h ago)   8d
+kube-vip-ds-kjspx                               1/1     Running           1 (3d12h ago)   8d
+kube-vip-ds-qc7js                               1/1     Running           1 (8d ago)      8d
+local-path-provisioner-5d56847996-jp8v6         1/1     Running           1 (8d ago)      9d
+metrics-server-7b67f64457-pvdbw                 1/1     Running           1 (8d ago)      9d
+</code></pre><p>We can now see 3 kube-vip-ds pods running in the cluster, we can now edit our kubeconfig to point to the VIP-ip instead of a specifik master node.</p>
+<pre tabindex="0"><code>vim ~/.kube/config
+</code></pre><p>Search for the context used when creating the k3s cluster in my case k3s-cluster, and change server to point to the vip</p>
+<p>If we now run commands against the cluster it still works.</p>
+<pre tabindex="0"><code>kubectl get nodes
+NAME   STATUS   ROLES                       AGE   VERSION
+k-m1   Ready    control-plane,etcd,master   9d    v1.26.3+k3s1
+k-m2   Ready    control-plane,etcd,master   9d    v1.26.3+k3s1
+k-m3   Ready    control-plane,etcd,master   9d    v1.26.3+k3s1
+k-w1   Ready    &lt;none&gt;                      9d    v1.26.3+k3s1
+k-w2   Ready    &lt;none&gt;                      9d    v1.26.3+k3s1
+k-w3   Ready    &lt;none&gt;                      9d    v1.26.3+k3s1
+</code></pre><h3 id="service-of-typ-loadbalancer">Service of typ LoadBalancer</h3>
+<p>Next step is to setup Kube-VIP so that it can provide services of type LoadBalancer. For that we need to deploy what is called the kube-vip-cloud-controller</p>
+<pre tabindex="0"><code>wget https://raw.githubusercontent.com/kube-vip/kube-vip-cloud-provider/main/manifest/kube-vip-cloud-controller.yaml &gt; kube-vip-cloud-controller.yaml
+
+kubectl apply -f kube-vip-cloud-controller.yaml
+</code></pre><p>We also need to give the cloud-controller a range of IPs which it can use to provide external IPs to services in our cluster.</p>
+<pre tabindex="0"><code>kubectl create configmap -n kube-system kubevip --from-literal range-global=192.168.1.220-192.168.1.230
+</code></pre><p>You can give it whatever range you want, I&rsquo;ve reserved about 50 ips in my router for this. There is an option to use DHCP but I haven&rsquo;t tried it out yet.</p>
+<p>I also like to save everything as manifests so I later on can let ArgoCD handle them, therefore we run below command.</p>
+<pre tabindex="0"><code>kubectl get cm kubevip -n kube-system -o yaml &gt; kubevipCm.yaml
+</code></pre><p>The moment of truth, let&rsquo;s try to expose a service and see if it works.</p>
+<pre tabindex="0"><code>kubectl apply -f https://raw.githubusercontent.com/inlets/inlets-operator/master/contrib/nginx-sample-deployment.yaml -n default
+kubectl expose deployment nginx-1 --name lb-test --port=80 --type=LoadBalancer -n default
+kubectl get svc
+NAME         TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+kubernetes   ClusterIP      10.43.0.1      &lt;none&gt;          443/TCP        9d
+lb-test      LoadBalancer   10.43.64.219   192.168.0.202   80:31296/TCP   61s
+</code></pre><p>As you can see our service nginx-1 of typ LoadBalancer got an external-ip from kube-vip.</p>
+<pre tabindex="0"><code>curl -L 192.168.0.202
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&#34;http://nginx.org/&#34;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&#34;http://nginx.com/&#34;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>I also had an issue with SysctlForbidden when creating services of type LoadBalancer. What I had to do was to ssh into the node that had the issue and edit the systemd startup script and add &lsquo;&ndash;kubelet-arg=allowed-unsafe-sysctls=net.ipv6.*&rsquo;</p>
+<pre tabindex="0"><code>ssh k-m1
+sudo vi /etc/systemd/system/k3s.service
+
+ExecStart=/usr/local/bin/k3s \
+    server \
+        &#39;--cluster-init&#39; \
+        &#39;--kubelet-arg=allowed-unsafe-sysctls=net.ipv6.*&#39; \
+</code></pre><h2 id="ingress-controller">Ingress controller</h2>
+<p>I will use the ingress-nginx ingress controller. We&rsquo;ll start by adding the helm repo locally and saving the value-file</p>
+<pre tabindex="0"><code>helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+
+helm repo update
+
+helm show values ingress-nginx/ingress-nginx &gt; values.yaml
+</code></pre><p>We can run most things as default, however we want to run the ingress controller as a daemonSet and we want it to be exposed as a service of typ LoadBalancer.</p>
+<p>The values-file is huge but these two parameters are what we will change.</p>
+<pre tabindex="0"><code>  # -- Use a `DaemonSet` or `Deployment`
+  kind: DaemonSet
+
+  type: LoadBalancer
+</code></pre><p>When deploying the ingress-controller it will get an external ip from kube-vip. This is kind of cool, because one can use the same setup in a cloud env and save some costs of creating a lot of external LoadBalancers.</p>
+<p>We are now ready to deploy let&rsquo;s run</p>
+<pre tabindex="0"><code>helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx --values values.yaml --set defaultBackend.enabled=true --create-namespace
+</code></pre><p>defaultBackend is just so that it will show a 404 if someone its the ingress on a non-existing route.</p>
+<pre tabindex="0"><code>kubectl get all -n ingress-nginx
+NAME                                                READY   STATUS    RESTARTS   AGE
+pod/ingress-nginx-controller-bsvvm                  1/1     Running   0          5d10h
+pod/ingress-nginx-controller-bvdkr                  1/1     Running   0          5d10h
+pod/ingress-nginx-controller-dsx6t                  1/1     Running   0          5d10h
+pod/ingress-nginx-controller-smzbf                  1/1     Running   0          5d10h
+pod/ingress-nginx-controller-vm4wq                  1/1     Running   0          5d10h
+pod/ingress-nginx-controller-wp84g                  1/1     Running   0          5d10h
+pod/ingress-nginx-defaultbackend-6594895459-58lf9   1/1     Running   0          5d10h
+
+NAME                                         TYPE           CLUSTER-IP     EXTERNAL-IP                                                          PORT(S)                      AGE
+service/ingress-nginx-controller             LoadBalancer   10.43.13.138   192.168.0.201   80:31317/TCP,443:30568/TCP   5d10h
+service/ingress-nginx-controller-admission   ClusterIP      10.43.218.54   &lt;none&gt;                                                               443/TCP                      5d10h
+service/ingress-nginx-defaultbackend         ClusterIP      10.43.32.237   &lt;none&gt;                                                               80/TCP                       5d10h
+
+NAME                                      DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+daemonset.apps/ingress-nginx-controller   6         6         6       6            6           kubernetes.io/os=linux   5d10h
+
+NAME                                           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/ingress-nginx-defaultbackend   1/1     1            1           5d10h
+
+NAME                                                      DESIRED   CURRENT   READY   AGE
+replicaset.apps/ingress-nginx-defaultbackend-6594895459   1         1         1       5d10h
+</code></pre><p>As you can see the service ingress-nginx-controller of typ LoadBalancer got an external-ip</p>
+<h2 id="nfs-storage">NFS storage</h2>
+<p>Since I at the moment do not have any good option for storage, I&rsquo;ll just create a vm to be used as a NFS server. The VM is already created and named k-svc</p>
+<p>On this VM i&rsquo;ll setup an nfs server with the following commands</p>
+<pre tabindex="0"><code>sudo apt install -y nfs-kernel-server
+sudo mkdir /srv/nfs/kubedata
+sudo chown nobody: /srv/nfs/kubedata
+sudo vi /etc/exports
+
+add:
+/srv/nfs/kubedata *(rw,sync,no_subtree_check,no_root_squash,no_all_squash,insecure)
+:wq
+
+sudo exportfs -rav
+sudo systemctl enable nfs-kernel-server
+sudo showmount -e localhost
+</code></pre><p>On all worker nodes I&rsquo;ll run the following commands</p>
+<pre tabindex="0"><code>sudo apt install -y nfs-common
+</code></pre><p>test if I can mount the disk from k-svc</p>
+<pre tabindex="0"><code>sudo mount -t nfs k-svc:/srv/nfs/kubedata /mnt
+sudo umount /mnt
+</code></pre><p>then I&rsquo;ll run</p>
+<pre tabindex="0"><code>helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+
+helm repo update
+
+helm install nfs nfs-subdir-external-provisioner/nfs-subdir-external-provisioner     --set nfs.server=k-svc.k8s.yavari.se --set nfs.path=/srv/nfs/kubedata --set storageClass.defaultClass=true --set storageClass.archiveOnDelete=false --set replicaCount=3 --set storageClass.accessModes=ReadWriteMany --set podDisruptionBudget.enabled=true --namespace nfs-storage --create-namespace
+</code></pre><p>To test if it works I&rsquo;ll apply the following yaml</p>
+<pre tabindex="0"><code>cat pvc-nfs.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nfs-pv1
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Mi
+</code></pre><pre tabindex="0"><code>kubectl apply -f pvc-nfs.yaml
+persistentvolumeclaim/pvc-nfs-pv1 created
+
+kubectl get pvc
+NAME          STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+pvc-nfs-pv1   Bound    pvc-5b9e8791-5e91-4ff9-8476-8dfe46cbaf2c   500Mi      RWX            nfs-client     11s
+</code></pre><p>And as we can see the pvc is created and bound.</p>
+<p>We are no ready to install ArgoCD and later on setup cert-manager and have it provision certificates from lets-encrypt</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/2023-04-10-cluster-architecture/" data-toggle="tooltip" data-placement="top" title="K3s cluster architecture">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
+                
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/installation" title="installation">
+                            installation
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/k3s" title="k3s">
+                            k3s
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/k3sup" title="k3sup">
+                            k3sup
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:afshin@yavari.se">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/afshinyavari">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/afshin-yavari-b6a36161">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Afshin Yavari" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Afshin Yavari 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

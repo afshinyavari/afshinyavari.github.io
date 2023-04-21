@@ -6,7 +6,70 @@
     <description>Recent content in Tags on Afshin Yavari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://afshinyavari.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://afshinyavari.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ingress</title>
+      <link>https://afshinyavari.github.io/tags/ingress/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/tags/ingress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>installation</title>
+      <link>https://afshinyavari.github.io/tags/installation/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/tags/installation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k3s</title>
+      <link>https://afshinyavari.github.io/tags/k3s/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/tags/k3s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k3sup</title>
+      <link>https://afshinyavari.github.io/tags/k3sup/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/tags/k3sup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kube-vip</title>
+      <link>https://afshinyavari.github.io/tags/kube-vip/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/tags/kube-vip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://afshinyavari.github.io/tags/kubernetes/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nfs</title>
+      <link>https://afshinyavari.github.io/tags/nfs/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/tags/nfs/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>architecture</title>
       <link>https://afshinyavari.github.io/tags/architecture/</link>
@@ -26,15 +89,6 @@
     </item>
     
     <item>
-      <title>k3s</title>
-      <link>https://afshinyavari.github.io/tags/k3s/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://afshinyavari.github.io/tags/k3s/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Kafka</title>
       <link>https://afshinyavari.github.io/tags/kafka/</link>
       <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
@@ -49,15 +103,6 @@
       <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://afshinyavari.github.io/tags/kafka-streams/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://afshinyavari.github.io/tags/kubernetes/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://afshinyavari.github.io/tags/kubernetes/</guid>
       <description></description>
     </item>
     

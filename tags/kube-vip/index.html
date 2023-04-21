@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Kafka-streams" />
-    <meta property="og:title" content="Kafka-streams" />
-    <meta property="twitter:title" content="Kafka-streams" />
+    <meta name="title" content="Kube-vip" />
+    <meta property="og:title" content="Kube-vip" />
+    <meta property="twitter:title" content="Kube-vip" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Afshin, Afshin Yavari, Kafka, Kubernetes, K8s, OpenShift, kafka-streams, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Kafka-streams | Afshin Yavari</title>
+    <title>Kube-vip | Afshin Yavari</title>
 
-    <link rel="canonical" href="/tags/kafka-streams/">
+    <link rel="canonical" href="/tags/kube-vip/">
 
     
     
@@ -189,21 +189,21 @@
 <div data-pagefind-ignore="all">
 
 <div class="post-preview">
-    <a href="https://afshinyavari.github.io/post/2023-04-10-welcome/">
+    <a href="https://afshinyavari.github.io/post/2023-04-21-installation/">
         <h2 class="post-title">
-            Welcome
+            K3s initial installation
         </h2>
 	
         <div class="post-content-preview">
 	
-            Hello and welcome to my blog. In this blog I will document what I do when I have some time to spare trying out different open source software.
-Last year I built my own server from used parts which I purchased on ebay. It&rsquo;s a dual cpu motherboard with two intel Xeon e5 2680 v4 each with 14 cores and 28 threads, 512 GB DDR4 ECC ram and 2 TB SSD disk, running VmWare ESXI for virtualization.
+            Background In my previous post I described a high level initial cluster architecture based on k3s, k3sup for installation, kube-vip to setup a VIP-ip for the kubernetes API and for loadbalancing services of type LoadBalancer, ingress for which will get an external IP from the loadbalancer and nfs for persistent volume claims.
+Setup The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 controle-planes and 3 worker nodes.
        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by      &#34;Afshin Yavari&#34; on Monday, April 10, 2023
+        Posted by      &#34;Afshin Yavari&#34; on Friday, April 21, 2023
         
         
     
@@ -415,7 +415,7 @@ Last year I built my own server from used parts which I purchased on ebay. It&rs
             
            
                    <li>
-                       <a href='/tags/kafka-streams/index.xml' rel="alternate" type="application/rss+xml" title="Afshin Yavari" >
+                       <a href='/tags/kube-vip/index.xml' rel="alternate" type="application/rss+xml" title="Afshin Yavari" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

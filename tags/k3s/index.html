@@ -189,7 +189,55 @@
 <div data-pagefind-ignore="all">
 
 <div class="post-preview">
+    <a href="https://afshinyavari.github.io/post/2023-04-21-installation/">
+        <h2 class="post-title">
+            K3s initial installation
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Background In my previous post I described a high level initial cluster architecture based on k3s, k3sup for installation, kube-vip to setup a VIP-ip for the kubernetes API and for loadbalancing services of type LoadBalancer, ingress for which will get an external IP from the loadbalancer and nfs for persistent volume claims.
+Setup The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 controle-planes and 3 worker nodes.
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by      &#34;Afshin Yavari&#34; on Friday, April 21, 2023
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://afshinyavari.github.io/post/2023-04-10-cluster-architecture/">
+        <h2 class="post-title">
+            K3s cluster architecture
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            High level cluster architecture This post will describe the k3s-cluster architecture, what components I will use and which steps I have to take before I can get ArgoCD up and running for Gitops. The goal is to do as few manual steps as possible until ArgoCD is installed and everything can be moved to git and a gitops approach.
+To be able to setup and access ArgoCD I need persistent storage.
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by      &#34;Afshin Yavari&#34; on Monday, April 10, 2023
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://afshinyavari.github.io/post/2023-04-11-cluster-setup/">
         <h2 class="post-title">
             K3s cluster architecture
         </h2>
@@ -311,6 +359,26 @@ To be able to setup and access ArgoCD I need persistent storage.
                
             
                
+                    <a href="/tags/installation" title="installation">
+                        installation
+                    </a>
+               
+            
+               
+                    <a href="/tags/k3s" title="k3s">
+                        k3s
+                    </a>
+               
+            
+               
+                    <a href="/tags/k3sup" title="k3sup">
+                        k3sup
+                    </a>
+               
+            
+               
+            
+               
             
                
             
@@ -318,6 +386,8 @@ To be able to setup and access ArgoCD I need persistent storage.
                     <a href="/tags/kubernetes" title="kubernetes">
                         kubernetes
                     </a>
+               
+            
                
             
                

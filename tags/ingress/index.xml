@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ingress on Afshin Yavari</title>
+    <link>https://afshinyavari.github.io/tags/ingress/</link>
+    <description>Recent content in Ingress on Afshin Yavari</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://afshinyavari.github.io/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K3s initial installation</title>
+      <link>https://afshinyavari.github.io/post/2023-04-21-installation/</link>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://afshinyavari.github.io/post/2023-04-21-installation/</guid>
+      <description>Background In my previous post I described a high level initial cluster architecture based on k3s, k3sup for installation, kube-vip to setup a VIP-ip for the kubernetes API and for loadbalancing services of type LoadBalancer, ingress for which will get an external IP from the loadbalancer and nfs for persistent volume claims.
+Setup The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 controle-planes and 3 worker nodes.</description>
+    </item>
+    
+  </channel>
+</rss>
