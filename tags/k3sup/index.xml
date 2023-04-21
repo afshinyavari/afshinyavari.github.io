@@ -17,15 +17,5 @@
 Setup The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 controle-planes and 3 worker nodes.</description>
     </item>
     
-    <item>
-      <title>K3s cluster architecture</title>
-      <link>https://afshinyavari.github.io/post/2023-04-11-cluster-setup/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://afshinyavari.github.io/post/2023-04-11-cluster-setup/</guid>
-      <description>High level cluster architecture This post will describe the k3s-cluster architecture, what components I will use and which steps I have to take before I can get ArgoCD up and running for Gitops. The goal is to do as few manual steps as possible until ArgoCD is installed and everything can be moved to git and a gitops approach.
-To be able to setup and access ArgoCD I need persistent storage.</description>
-    </item>
-    
   </channel>
 </rss>
