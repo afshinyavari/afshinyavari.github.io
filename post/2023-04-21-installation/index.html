@@ -207,7 +207,7 @@
                         
                             Posted by 
                             
-                                     &#34;Afshin Yavari&#34;
+                                Afshin Yavari
                              
                             on 
                             Friday, April 21, 2023
@@ -239,8 +239,8 @@
                 <h1 id="background">Background</h1>
 <p>In my previous post I described a high level initial cluster architecture based on k3s, k3sup for installation, kube-vip to setup a VIP-ip for the kubernetes API and for loadbalancing services of type LoadBalancer, ingress for which will get an external IP from the loadbalancer and nfs for persistent volume claims.</p>
 <h1 id="setup">Setup</h1>
-<p>The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 controle-planes and 3 worker nodes. THe 7th virtual machine will be the nfs server and in this setup will be a single point of failure. I will later on solve this by adding more disks to my server and maybe setup true-NAS or something else.</p>
-<h2 id="k3sup-pre-requisits">K3sup pre-requisits</h2>
+<p>The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 control-planes and 3 worker nodes. The 7th virtual machine will be the NFS server and in this setup will be a single point of failure. I will later on solve this by adding more disks to my server and maybe setup true-NAS or something else.</p>
+<h2 id="k3sup-pre-requisites">K3sup pre-requisites</h2>
 <p>Start by setting up k3sup on a machine, I will use my own personal computer.</p>
 <pre tabindex="0"><code>curl -sLS https://get.k3sup.dev | sh
 sudo install k3sup /usr/local/bin/
@@ -300,14 +300,14 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-w1
 ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-w2
 ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-w3
 ssh-copy-id -i ~/.ssh/id_ed25519.pub afshin@k-svc
-</code></pre><p>On all machines setup so the user which k3sup will use can run passwordless sudo commands.</p>
+</code></pre><p>On all machines setup so the user which k3sup will use can run password less sudo commands.</p>
 <p>On all machines run</p>
 <pre tabindex="0"><code>sudo visudo
 </code></pre><p>And add</p>
 <pre tabindex="0"><code>afshin  ALL=(ALL) NOPASSWD: ALL
 </code></pre><h2 id="k3s-installation">K3s installation</h2>
-<p>We are now ready to utilize k3sup to create our k3s cluster. Since we want to use Kube-VIP to create a VIP IP for the k8s API we have to take that into consideration when setting up our controle-plane nodes. We do that by taking an IP which we later on will use as our VIP and this will be our tls-san.</p>
-<p>Below command will setup our initial control-plane node. Ip is the ip of the virtual machine, no-extras is because I don&rsquo;t want servies such as Traefik etc which k3sup can setup for you, tls-san is the VIP-IP, context will be the name of the cluster and also how you can switch back and forth between cluster if having all clusters in one kubeconfig which we will get by adding the local-path and merge commands.</p>
+<p>We are now ready to utilize k3sup to create our k3s cluster. Since we want to use Kube-VIP to create a VIP IP for the k8s API we have to take that into consideration when setting up our control-plane nodes. We do that by taking an IP which we later on will use as our VIP and this will be our tls-san.</p>
+<p>Below command will setup our initial control-plane node. Ip is the ip of the virtual machine, no-extras is because I don&rsquo;t want services such as Traefik etc which k3sup can setup for you, tls-san is the VIP-IP, context will be the name of the cluster and also how you can switch back and forth between cluster if having all clusters in one kubeconfig which we will get by adding the local-path and merge commands.</p>
 <pre tabindex="0"><code>k3sup install  \
 --ip master-1-ip \
 --user afshin \
@@ -350,7 +350,7 @@ kubectl apply -f rbac.yaml
 </code></pre><p>Then we need the DaemonSet deployment-file, we can copy this from the <a href="https://kube-vip.io/docs/installation/daemonset/">documentation </a></p>
 <p>Whats important to note here is the</p>
 <ul>
-<li>affinity rules which says it has to run on controle-plane/master nodes</li>
+<li>affinity rules which says it has to run on control-plane/master nodes</li>
 <li>vip_arp = true</li>
 <li>adress, which is the vip-adress (tls-san) we used when setting up the cluster</li>
 </ul>
@@ -457,14 +457,14 @@ k-m3   Ready    control-plane,etcd,master   9d    v1.26.3+k3s1
 k-w1   Ready    &lt;none&gt;                      9d    v1.26.3+k3s1
 k-w2   Ready    &lt;none&gt;                      9d    v1.26.3+k3s1
 k-w3   Ready    &lt;none&gt;                      9d    v1.26.3+k3s1
-</code></pre><h3 id="service-of-typ-loadbalancer">Service of typ LoadBalancer</h3>
+</code></pre><h3 id="service-of-type-loadbalancer">Service of type LoadBalancer</h3>
 <p>Next step is to setup Kube-VIP so that it can provide services of type LoadBalancer. For that we need to deploy what is called the kube-vip-cloud-controller</p>
 <pre tabindex="0"><code>wget https://raw.githubusercontent.com/kube-vip/kube-vip-cloud-provider/main/manifest/kube-vip-cloud-controller.yaml &gt; kube-vip-cloud-controller.yaml
 
 kubectl apply -f kube-vip-cloud-controller.yaml
 </code></pre><p>We also need to give the cloud-controller a range of IPs which it can use to provide external IPs to services in our cluster.</p>
 <pre tabindex="0"><code>kubectl create configmap -n kube-system kubevip --from-literal range-global=192.168.1.220-192.168.1.230
-</code></pre><p>You can give it whatever range you want, I&rsquo;ve reserved about 50 ips in my router for this. There is an option to use DHCP but I haven&rsquo;t tried it out yet.</p>
+</code></pre><p>You can give it whatever range you want, I&rsquo;ve reserved about 50 IPs in my router for this. There is an option to use DHCP but I haven&rsquo;t tried it out yet.</p>
 <p>I also like to save everything as manifests so I later on can let ArgoCD handle them, therefore we run below command.</p>
 <pre tabindex="0"><code>kubectl get cm kubevip -n kube-system -o yaml &gt; kubevipCm.yaml
 </code></pre><p>The moment of truth, let&rsquo;s try to expose a service and see if it works.</p>
@@ -474,7 +474,7 @@ kubectl get svc
 NAME         TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
 kubernetes   ClusterIP      10.43.0.1      &lt;none&gt;          443/TCP        9d
 lb-test      LoadBalancer   10.43.64.219   192.168.0.202   80:31296/TCP   61s
-</code></pre><p>As you can see our service nginx-1 of typ LoadBalancer got an external-ip from kube-vip.</p>
+</code></pre><p>As you can see our service lb-test of type LoadBalancer got an external-ip from kube-vip.</p>
 <pre tabindex="0"><code>curl -L 192.168.0.202
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -516,7 +516,7 @@ ExecStart=/usr/local/bin/k3s \
 helm repo update
 
 helm show values ingress-nginx/ingress-nginx &gt; values.yaml
-</code></pre><p>We can run most things as default, however we want to run the ingress controller as a daemonSet and we want it to be exposed as a service of typ LoadBalancer.</p>
+</code></pre><p>We can run most things as default, however we want to run the ingress controller as a daemonSet and we want it to be exposed as a service of type LoadBalancer.</p>
 <p>The values-file is huge but these two parameters are what we will change.</p>
 <pre tabindex="0"><code>  # -- Use a `DaemonSet` or `Deployment`
   kind: DaemonSet
@@ -525,7 +525,7 @@ helm show values ingress-nginx/ingress-nginx &gt; values.yaml
 </code></pre><p>When deploying the ingress-controller it will get an external ip from kube-vip. This is kind of cool, because one can use the same setup in a cloud env and save some costs of creating a lot of external LoadBalancers.</p>
 <p>We are now ready to deploy let&rsquo;s run</p>
 <pre tabindex="0"><code>helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx --values values.yaml --set defaultBackend.enabled=true --create-namespace
-</code></pre><p>defaultBackend is just so that it will show a 404 if someone its the ingress on a non-existing route.</p>
+</code></pre><p>defaultBackend is a default page if someone hits the ingress on a non-existing route.</p>
 <pre tabindex="0"><code>kubectl get all -n ingress-nginx
 NAME                                                READY   STATUS    RESTARTS   AGE
 pod/ingress-nginx-controller-bsvvm                  1/1     Running   0          5d10h
@@ -549,10 +549,10 @@ deployment.apps/ingress-nginx-defaultbackend   1/1     1            1           
 
 NAME                                                      DESIRED   CURRENT   READY   AGE
 replicaset.apps/ingress-nginx-defaultbackend-6594895459   1         1         1       5d10h
-</code></pre><p>As you can see the service ingress-nginx-controller of typ LoadBalancer got an external-ip</p>
+</code></pre><p>As you can see the service ingress-nginx-controller of type LoadBalancer got an external-ip</p>
 <h2 id="nfs-storage">NFS storage</h2>
-<p>Since I at the moment do not have any good option for storage, I&rsquo;ll just create a vm to be used as a NFS server. The VM is already created and named k-svc</p>
-<p>On this VM i&rsquo;ll setup an nfs server with the following commands</p>
+<p>Since I at the moment do not have any good option for storage, I&rsquo;ll just create a VM to be used as a NFS server. The VM is already created and named k-svc</p>
+<p>On this VM I’ll setup an NFS server with the following commands</p>
 <pre tabindex="0"><code>sudo apt install -y nfs-kernel-server
 sudo mkdir /srv/nfs/kubedata
 sudo chown nobody: /srv/nfs/kubedata
