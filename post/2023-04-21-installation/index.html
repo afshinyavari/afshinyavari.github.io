@@ -237,7 +237,7 @@
 
                 
                 <h1 id="background">Background</h1>
-<p>In my previous post I described a high level initial cluster architecture based on k3s, k3sup for installation, kube-vip to setup a VIP-ip for the kubernetes API and for loadbalancing services of type LoadBalancer, ingress for which will get an external IP from the loadbalancer and nfs for persistent volume claims.</p>
+<p>In my previous post I described a high level initial cluster architecture based on k3s, where we&rsquo;ll use k3sup for installation, kube-vip to setup a VIP-ip for the kubernetes API and for loadbalancing services of type LoadBalancer, ingress-nginx for ingress which will get an external IP from the loadbalancer and NFS for persistent volume claims.</p>
 <h1 id="setup">Setup</h1>
 <p>The starting point is 7 virtual machines with Ubuntu-server 22.04, 6 of which will create the k3s cluster of 3 control-planes and 3 worker nodes. The 7th virtual machine will be the NFS server and in this setup will be a single point of failure. I will later on solve this by adding more disks to my server and maybe setup true-NAS or something else.</p>
 <h2 id="k3sup-pre-requisites">K3sup pre-requisites</h2>
